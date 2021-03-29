@@ -1,0 +1,36 @@
+version: '3.9'
+
+services:
+
+  frontend:
+    container_name: frontend
+    build: ./frontend
+    ports:
+      - 3000:3000
+    command: serve -s build -l 3000
+    volumes:
+      - ./frontend/src:/usr/src/app/src
+
+  api:
+    container_name: api
+    build: ./api
+    ports:
+      - 3001:3001
+    environment:
+      - PORT=3001
+      - MONGO_DB=mongodb://mongo_db:27017/api
+
+  mongo_db:
+    container_name: mongo_db
+    image: mongo:latest
+    ports:
+      - 27017:27017
+
+  nginx:
+    container_name: nginx_web
+    image: nginx:stable-alpine
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf
+
