@@ -72,8 +72,10 @@ export default class Cv extends React.Component {
       </div>
       <div className="row pb-1">
         <div className="col-sm-3 d-flex align-items-center justify-content-center">
+          <div className="card">
           <div style={{ color: '#0487cc' }}>
             <p><u>Октябрь 2020 - Апрель 2021</u></p>
+          </div>
           </div>
         </div>
         <div className="col-sm-9">
