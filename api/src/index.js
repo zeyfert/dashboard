@@ -25,7 +25,7 @@ app.get('/api/number', (req, res) => {
   });
 });
 
-app.get('/api/people', (req, res) => {
+app.get('/api/population', (req, res) => {
   statisticsModelPeople.find({}, (err, data) => {
     if (err) { return console.log(err) }
     res.send(data);

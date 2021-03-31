@@ -5,24 +5,40 @@ export default class Dashboard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [],
-      height: 350,
-      dataPeople: [],
+      dataNumber: [],
+      heightDiagram: 350,
+      dataPopulation: [],
     };
-  }
+  };
 
   componentDidMount() {
     axios.get('/api/number')
       .then((res) => {
         this.setState({ data: res.data })
-      })
-    axios.get('/api/people')
+      });
+    axios.get('/api/population')
       .then((res) => {
-        this.setState({ dataPeople: res.data })
-      })
-  }
+        this.setState({ dataPopulation: res.data })
+      });
+  };
 
   prepareDiagram = (data, groupName, label) => data.reduce((acc, element) => {
+    acc.labels.push(element.City);
+    acc.datasets[0].data.push(element[groupName]);
+    return acc;
+  }, {
+    labels: [], 
+    datasets: [{
+      label,
+      data: [],
+      backgroundColor: "rgba(1,87,155,0.2)",
+      borderColor: "rgba(3,169,244,1)",
+      hoverBackgroundColor: "rgba(3,169,244,0.4)",
+      hoverBorderColor: "rgba(3,169,244,1)",
+      borderWidth: 2,
+  }]});
+
+  preparePieDiagram = (data, groupName, label) => data.reduce((acc, element) => {
     acc.labels.push(element.City);
     acc.datasets[0].data.push(element[groupName]);
     return acc;
@@ -53,7 +69,7 @@ export default class Dashboard extends React.Component {
   }]});
 
   render() {
-    const { data, height, dataPeople } = this.state;
+    const { dataNumber, heightDiagram, dataPopulation } = this.state;
     return (
       <div>
         <div className="row pb-4">
@@ -61,14 +77,14 @@ export default class Dashboard extends React.Component {
             <div className="card h-400">
               <div className="card-body">
                 <Pie
-                  data={this.prepareDiagram(dataPeople, 'People','Численность')}
-                  height={height}
+                  data={this.preparePieDiagram(dataPopulation, 'People','Численность')}
+                  height={heightDiagram}
                   options={{
                     maintainAspectRatio: false,
                     title: {
                       display: true,
-                      text: 'Численность',
-                      position: 'top',
+                      text: 'Население',
+                      position: 'bottom',
                     } 
                   }}
                 />
@@ -79,8 +95,8 @@ export default class Dashboard extends React.Component {
             <div className="card h-400">
               <div className="card-body">
                 <Bar
-                  data={this.prepareDiagram(data, 'WebStudies', 'Количество Web-студий')}
-                  height={height}
+                  data={this.prepareDiagram(dataNumber, 'WebStudies', 'Количество Web-студий')}
+                  height={heightDiagram}
                   options={{
                     maintainAspectRatio: false
                   }}
@@ -94,8 +110,8 @@ export default class Dashboard extends React.Component {
             <div className="card h-400">
               <div className="card-body">
               <Bar
-                  data={this.prepareDiagram(data, 'Hosting' ,'Количество хостингов')}
-                  height={height}
+                  data={this.prepareDiagram(dataNumber, 'Hosting' ,'Количество хостингов')}
+                  height={heightDiagram}
                   options={{
                     maintainAspectRatio: false
                   }}
@@ -107,8 +123,8 @@ export default class Dashboard extends React.Component {
             <div className="card h-400">
               <div className="card-body">
                 <Bar
-                  data={this.prepareDiagram(data, 'University', 'Количество университетов')}
-                  height={height}
+                  data={this.prepareDiagram(dataNumber, 'University', 'Количество университетов')}
+                  height={heightDiagram}
                   options={{
                     maintainAspectRatio: false
                   }}
@@ -118,7 +134,7 @@ export default class Dashboard extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
   };
 };
 
