@@ -14,7 +14,7 @@ export default class Dashboard extends React.Component {
   componentDidMount() {
     axios.get('/api/number')
       .then((res) => {
-        this.setState({ data: res.data })
+        this.setState({ dataNumber: res.data })
       });
     axios.get('/api/population')
       .then((res) => {
