@@ -1,7 +1,7 @@
 
 
 import { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Router, Switch } from 'react-router-dom';
 import './App.css';
 import Cv from './components/Cv';
 import Tasks from './components/Tasks';
@@ -9,6 +9,7 @@ import Modal from './components/Modal';
 import Dashboard from './components/Dashboard';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
+import Omnicomm from './components/Omnicomm';
 
 export default class App extends Component {
   render() {
@@ -21,6 +22,7 @@ export default class App extends Component {
                 <Route path="/" component={Dashboard} exact />
                 <Route path="/tasks" component={Tasks} />
                 <Route path="/modal" component={Modal} />
+                <Route path="/omnicomm" component={Omnicomm} />
                 <Route path="/cv" component={Cv} />
             </Switch>
             <Footer />
