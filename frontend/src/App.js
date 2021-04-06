@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Cv from './components/Cv';
 import Tasks from './components/Tasks';
+import Modal from './components/Modal';
 import Dashboard from './components/Dashboard';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
@@ -15,12 +16,13 @@ export default class App extends Component {
     return (
       <BrowserRouter>
         <Navigation />
-        <div className="container h-100">
-          <div className="py-4 h-100"> 
+        <div className="container">
+          <div className="py-4"> 
             <Switch>
                 <Route path="/" component={Dashboard} exact />
                 <Route path="/tasks" component={Tasks} />
                 <Route path="/search" component={Search} />
+                <Route path="/modal" component={Modal} />
                 <Route path="/cv" component={Cv} />
             </Switch>
             <Footer />

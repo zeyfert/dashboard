@@ -18,6 +18,9 @@ export default class Navigation extends React.Component {
                   <NavLink to="/tasks">ToDo</NavLink>
                 </li>
                 <li className="nav-link">
+                  <NavLink to="/modal">Modal</NavLink>
+                </li>
+                <li className="nav-link">
                   <NavLink to="/search">Search</NavLink>
                 </li>
                 {/* <li className="nav-link">
