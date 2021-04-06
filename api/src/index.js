@@ -32,6 +32,15 @@ app.get('/api/population', (req, res) => {
   });
 });
 
+app.get('/api/search', (req, res) => {
+  statisticsModelPeople.find({}, (err, data) => {
+    if (err) { return console.log(err)}
+    const searchedValue = new RegExp(`^${req.query.country.toLowerCase()}.*`, 'g');
+    const filteredData = data.filter(({ City }) => City.toLowerCase().match(searchedValue));
+    res.send(filteredData);
+  });
+});
+
 mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
   if (err) { return console.log(err) }
   app.listen(port, () => {
