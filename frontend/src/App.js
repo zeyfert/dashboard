@@ -9,6 +9,7 @@ import Modal from './components/Modal';
 import Dashboard from './components/Dashboard';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
+import Search from './components/Search';
 
 export default class App extends Component {
   render() {
@@ -20,6 +21,7 @@ export default class App extends Component {
             <Switch>
                 <Route path="/" component={Dashboard} exact />
                 <Route path="/tasks" component={Tasks} />
+                <Route path="/search" component={Search} />
                 <Route path="/modal" component={Modal} />
                 <Route path="/cv" component={Cv} />
             </Switch>
