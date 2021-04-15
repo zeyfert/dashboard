@@ -11,7 +11,13 @@ export default class Navigation extends React.Component {
                 <img src={logo} style={{ height: 40 }} alt="logo" />
               </a>
               <ul className="nav mr-auto">
+              <li className="nav-link">
+                  <NavLink to="/">Сводный отчет</NavLink>
+                </li>
                 <li className="nav-link">
+                  <NavLink to="/deviation">Отчет о нарушениях</NavLink>
+                </li>
+                {/* <li className="nav-link">
                   <NavLink exact to="/">Dashboard</NavLink>
                 </li>
                 <li className="nav-link">
@@ -19,16 +25,17 @@ export default class Navigation extends React.Component {
                 </li>
                 <li className="nav-link">
                   <NavLink to="/modal">Modal</NavLink>
-                </li>
+                </li> */}
+
                 {/* <li className="nav-link">
                   <NavLink to="/sliders">Sliders</NavLink>
                 </li>
                 <li className="nav-link">
                   <NavLink to="/tables">Tables</NavLink>
                 </li> */}
-                <li className="nav-link">
+                {/* <li className="nav-link">
                   <NavLink to="/cv">CV</NavLink>
-                </li>
+                </li> */}
               </ul>
               <a  className="btn btn-outline-success navbar-toogler-right" href="https://github.com/zeyfert/dashboard">GitHub</a>
             </nav>

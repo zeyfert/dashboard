@@ -9,6 +9,8 @@ import Modal from './components/Modal';
 import Dashboard from './components/Dashboard';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
+import TableOmni from './components/OmnicommTable';
+import Deviation from './components/OmnicommDeviation';
 
 export default class App extends Component {
   render() {
@@ -18,10 +20,13 @@ export default class App extends Component {
         <div className="container">
           <div className="py-4"> 
             <Switch>
-                <Route path="/" component={Dashboard} exact />
-                <Route path="/tasks" component={Tasks} />
+                {/* <Route path="/" component={Dashboard} exact /> */}
+                <Route path="/" component={TableOmni} exact />
+                <Route path="/deviation" component={Deviation} />
+                {/* <Route path="/tasks" component={Tasks} />
                 <Route path="/modal" component={Modal} />
-                <Route path="/cv" component={Cv} />
+                <Route path="/cv" component={Cv} /> */}
+
             </Switch>
             <Footer />
           </div>
