@@ -12,7 +12,10 @@ export default class Navigation extends React.Component {
               </a>
               <ul className="nav mr-auto">
                 <li className="nav-link">
-                  <NavLink exact to="/">Dashboard</NavLink>
+                  <NavLink exact to="/">Bitcoin</NavLink>
+                </li>
+                <li className="nav-link">
+                  <NavLink exact to="/stat">Dashboard</NavLink>
                 </li>
                 <li className="nav-link">
                   <NavLink to="/tasks">ToDo</NavLink>
@@ -26,9 +29,9 @@ export default class Navigation extends React.Component {
                 <li className="nav-link">
                   <NavLink to="/tables">Tables</NavLink>
                 </li> */}
-                <li className="nav-link">
+                {/* <li className="nav-link">
                   <NavLink to="/cv">CV</NavLink>
-                </li>
+                </li> */}
               </ul>
               <a  className="btn btn-outline-success navbar-toogler-right" href="https://github.com/zeyfert/dashboard">GitHub</a>
             </nav>

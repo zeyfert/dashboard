@@ -15,6 +15,7 @@ services:
     environment:
       - PORT=3001
       - MONGO_DB=mongodb://mongo_db:27017/api
+      - API_KEY=
 
   mongo_db:
     container_name: mongo_db
