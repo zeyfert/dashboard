@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
-let { port, db } = require('./variables');
+let { port, db, apiToken } = require('./variables');
+const axios = require('axios');
 
 const app = express();
 
@@ -30,6 +31,22 @@ app.get('/api/population', (req, res) => {
     if (err) { return console.log(err) }
     res.send(data);
   });
+});
+
+app.get('/api/bitcoin/hourly', (req, res) => {
+  axios.get('https://min-api.cryptocompare.com/data/v2/histohour?fsym=BTC&tsym=USD&limit=10', {
+    headers: {
+      'authorization': `Apikey ${apiToken}`,
+    },
+  }).then((data) => res.send(data.data.Data.Data.map(({ time, close }) => ({ time, close }))));
+});
+
+app.get('/api/bitcoin/daily', (req, res) => {
+  axios.get('https://min-api.cryptocompare.com/data/v2/histoday?fsym=BTC&tsym=USD&limit=7', {
+    headers: {
+      'authorization': `Apikey ${apiToken}`,
+    },
+  }).then((data) => res.send(data.data.Data.Data.map(({ time, close }) => ({ time, close }))));
 });
 
 mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
